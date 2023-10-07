@@ -1,12 +1,8 @@
 import tinyfrog from "@/helpers/tinyfrog";
-import { Input } from "./ui/input";
-import { useState } from "react";
 import ArticlesList from "./ArticlesList";
 
-export const revalidate = 60;
-
 const ArticlesListData = async () => {
-  const articles = await tinyfrog("collections/articles", undefined);
+  const articles = await tinyfrog("collections/articles");
   return <ArticlesList articles={articles} />;
 };
 

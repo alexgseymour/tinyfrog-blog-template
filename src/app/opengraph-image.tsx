@@ -4,8 +4,7 @@ import { ImageResponse } from "next/server";
 export const runtime = "edge";
 
 // Image metadata
-export const alt =
-  "tinyfrog |  A suite of tools needed to build, manage and grow your online projects";
+export const alt = "Acme | All the latest Acme news, straight from the team.";
 export const size = {
   width: 1200,
   height: 630,
@@ -44,12 +43,11 @@ export default async function Image() {
             alignItems: "center",
           }}
         >
-          <div style={{ paddingBottom: "3rem" }}>tinyfrog</div>
+          <div style={{ paddingBottom: "3rem" }}>Acme</div>
           <div
             style={{ fontSize: "2rem", textAlign: "center", color: "#334155" }}
           >
-            A suite of tools needed to build, manage and grow your online
-            projects.
+            All the latest Acme news, straight from the team.
           </div>
         </div>
       </div>

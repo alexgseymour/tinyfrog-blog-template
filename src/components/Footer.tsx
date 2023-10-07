@@ -2,8 +2,6 @@ import { getSocials } from "@/helpers/api";
 import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 60;
-
 const Footer = async () => {
   const socials = await getSocials();
   return (

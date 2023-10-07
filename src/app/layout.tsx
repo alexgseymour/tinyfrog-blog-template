@@ -1,10 +1,10 @@
-import Navbar from "@/components/Navbar";
-import "./globals.css";
 import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
 import localFont from "next/font/local";
-import Link from "next/link";
-import Head from "next/head";
 import Footer from "@/components/Footer";
+import "./globals.css";
+
+export const dynamic = "force-dynamic";
 
 const satoshi = localFont({
   src: [
@@ -21,10 +21,10 @@ const satoshi = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Tinyfrog",
-    default: "Tinyfrog | Blog",
+    template: "%s | Acme",
+    default: "Acme | Blog",
   },
-  description: "All the latest tinyfrog news, straight from the team.",
+  description: "All the latest Acme news, straight from the team.",
 };
 
 export default function RootLayout({

@@ -61,7 +61,7 @@ export default async function Home({ params }: Props) {
     keywords: keywords,
     publisher: {
       "@type": "Organization",
-      name: "tinyfrog",
+      name: "Acme",
     },
     url: `https://tinyfrog.co/${slug}`,
     mainEntityOfPage: {

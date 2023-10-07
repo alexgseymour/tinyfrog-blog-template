@@ -3,9 +3,7 @@ import dayjs from "dayjs";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const res = await tinyfrog("collections/articles", undefined, {
-    cache: "no-cache",
-  });
+  const res = await tinyfrog("collections/articles");
 
   return res.data.entries.map((article) => {
     return {

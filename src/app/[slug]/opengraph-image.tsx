@@ -6,7 +6,7 @@ import { getArticle } from "../../helpers/api";
 export const runtime = "edge";
 
 // Image metadata
-export const alt = "tinyfrog | Article";
+export const alt = "Acme | Article";
 export const size = {
   width: 1200,
   height: 630,

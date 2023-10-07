@@ -3,16 +3,10 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 60;
-
 const HeroArticle = async () => {
-  const res = await tinyfrog(
-    "collections/articles",
-    { filters: { highlighted: { $eq: true } } },
-    {
-      next: { revalidate: 1 },
-    }
-  );
+  const res = await tinyfrog("collections/articles", {
+    filters: { highlighted: { $eq: true } },
+  });
 
   const article = res.data.entries[0];
 
