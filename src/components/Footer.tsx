@@ -1,9 +1,10 @@
-import { getSocials } from "@/helpers/api";
+import tinyfrog from "@/helpers/tinyfrog";
 import Image from "next/image";
 import Link from "next/link";
 
 const Footer = async () => {
-  const socials = await getSocials();
+  const socials = await tinyfrog.content.get({ path: "collections/socials" });
+  console.log(socials);
   return (
     <div className="flex justify-between container py-10 items-end text-slate-800">
       <div>

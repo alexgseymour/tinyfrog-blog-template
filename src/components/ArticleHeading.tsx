@@ -17,7 +17,7 @@ const ArticleHeading = ({ heading }: { heading: RichTextJSON }) => {
     4: "text-[0.75rem] pl-3",
   };
 
-  const slug = slugify(heading.content[0]?.text || "", {
+  const slug = slugify(heading.content?.[0]?.text || "", {
     lower: true,
     strict: true,
   });
@@ -44,7 +44,7 @@ const ArticleHeading = ({ heading }: { heading: RichTextJSON }) => {
           visible && "text-indigo-700 font-bold"
         )}
       >
-        {heading.content[0]?.text}
+        {heading.content?.[0]?.text}
       </a>
     </li>
   );

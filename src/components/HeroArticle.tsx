@@ -4,9 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HeroArticle = async () => {
-  const res = await tinyfrog("collections/articles", {
-    filters: { highlighted: { $eq: true } },
+  const res = await tinyfrog.content.get({
+    path: "collections/articles",
+    filters: {
+      attributes: {
+        highlighted: { $eq: true },
+      },
+    },
+    config: { cache: "no-cache" },
   });
+
+  console.log(res);
 
   const article = res.data.entries[0];
 

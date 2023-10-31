@@ -10,7 +10,7 @@ import rehypeParse from "rehype-parse";
 import rehypeStringify from "rehype-stringify";
 import rehypeSlug from "rehype-slug";
 import ArticleHeading from "@/components/ArticleHeading";
-import { getArticle, getSocials } from "../../helpers/api";
+import tinyfrog from "@/helpers/tinyfrog";
 
 export const revalidate = 60;
 
@@ -20,7 +20,12 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = await getArticle(params.slug);
+  const articles = await tinyfrog.content.get({
+    path: "collections/articles",
+    filters: { attributes: { slug: { $eq: params.slug } } },
+  });
+
+  const article = articles.data.entries[0];
   if (!article) return {};
   const { author_name, description, heading } = article.attributes;
   return {
@@ -31,8 +36,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Home({ params }: Props) {
-  const article = await getArticle(params.slug);
-  const socials = await getSocials();
+  const articles = await tinyfrog.content.get({
+    path: "collections/articles",
+    filters: { attributes: { slug: { $eq: params.slug } } },
+  });
+
+  const article = articles.data.entries[0];
+  const socials = await tinyfrog.content.get({ path: "collections/socials" });
 
   if (!article) return <></>;
 

@@ -1,6 +1,5 @@
 import tinyfrog from "@/helpers/tinyfrog";
 import { ImageResponse } from "next/server";
-import { getArticle } from "../../helpers/api";
 
 // Route segment config
 export const runtime = "edge";
@@ -16,7 +15,12 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image({ params }: { params: { slug: string } }) {
-  const article = await getArticle(params.slug);
+  const articles = await tinyfrog.content.get({
+    path: "collections/articles",
+    filters: { attributes: { slug: { $eq: params.slug } } },
+  });
+
+  const article = articles.data.entries[0];
 
   if (!article) return;
 
